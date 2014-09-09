@@ -28,7 +28,7 @@
 @class TSContext;
 @class TSSequence;
 
-typedef TSSequence *(^TSTaskBlock)(TSContext *context);
+typedef id (^TSTaskBlock)(TSContext *context);
 
 @interface TSSequence : NSObject
 

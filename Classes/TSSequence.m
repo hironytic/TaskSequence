@@ -24,6 +24,7 @@
 //
 
 #import "TSSequence.h"
+#import "TSContext.h"
 
 @interface TSSequence ()
 @property(nonatomic, strong) NSArray *blocks;
@@ -60,11 +61,16 @@
         TSTaskBlock block = [taskStack lastObject];
         [taskStack removeLastObject];
         
-        TSSequence *preceding = block(context);
-        if (preceding != nil) {
-            for (TSTaskBlock aBlock in [preceding.blocks reverseObjectEnumerator]) {
-                [taskStack addObject:aBlock];
+        id result = block(context);
+        if (result != nil && [result isKindOfClass:[TSSequence class]]) {
+            TSSequence *preceding = result;
+            if (preceding != nil) {
+                for (TSTaskBlock aBlock in [preceding.blocks reverseObjectEnumerator]) {
+                    [taskStack addObject:aBlock];
+                }
             }
+        } else {
+            context.result = result;
         }
     }
 }
