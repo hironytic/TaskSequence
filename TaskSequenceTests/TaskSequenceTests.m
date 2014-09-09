@@ -24,6 +24,8 @@
 //
 
 #import <XCTest/XCTest.h>
+#import "TSContext.h"
+#import "TSSequence.h"
 
 @interface TaskSequenceTests : XCTestCase
 
@@ -43,9 +45,50 @@
     [super tearDown];
 }
 
-- (void)testExample
-{
-    XCTFail(@"No implementation for \"%s\"", __PRETTY_FUNCTION__);
+- (void)testRunTask {
+    __block int value = 1;
+    TSContext *context = [[TSContext alloc] init];
+    TSSequence *sequence = [TSSequence sequenceWithBlocks:@[^id(TSContext *context) {
+        XCTAssertNil(context.result);
+        value = value * 10 + 2;
+        return @"Wow";
+    }, ^id(TSContext *context) {
+        XCTAssertEqualObjects(context.result, @"Wow");
+        value = value * 10 + 3;
+        return @33;
+    }, ^id(TSContext *context) {
+        value = value * 10 + 4;
+        XCTAssertEqualObjects(context.result, @33);
+        return nil;
+    }]];
+
+    [TSSequence runSequence:sequence context:context];
+    XCTAssertEqual(value, 1234);
+}
+
+- (void)testRunTaskWithSubtask {
+    __block int value = 1;
+    TSContext *context = [[TSContext alloc] init];
+    TSSequence *sequence = [TSSequence sequenceWithBlocks:@[^id(TSContext *context) {
+        XCTAssertNil(context.result);
+        value = value * 10 + 2;
+        return [TSSequence sequenceWithBlock:^id(TSContext *context) {
+            XCTAssertNil(context.result);
+            value = value * 10 + 5;
+            return @8;
+        }];
+    }, ^id(TSContext *context) {
+        XCTAssertEqualObjects(context.result, @8);
+        value = value * 10 + 3;
+        return @33;
+    }, ^id(TSContext *context) {
+        value = value * 10 + 4;
+        XCTAssertEqualObjects(context.result, @33);
+        return nil;
+    }]];
+    
+    [TSSequence runSequence:sequence context:context];
+    XCTAssertEqual(value, 12534);
 }
 
 @end
