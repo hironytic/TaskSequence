@@ -19,6 +19,8 @@
 		5039E8BC19BE868500B1BBF2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5039E8A419BE868500B1BBF2 /* UIKit.framework */; };
 		5039E8C419BE868500B1BBF2 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5039E8C219BE868500B1BBF2 /* InfoPlist.strings */; };
 		5039E8C619BE868500B1BBF2 /* TaskSequenceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5039E8C519BE868500B1BBF2 /* TaskSequenceTests.m */; };
+		5039E8D219BEE88000B1BBF2 /* TSSequence.m in Sources */ = {isa = PBXBuildFile; fileRef = 5039E8D119BEE88000B1BBF2 /* TSSequence.m */; };
+		5039E8D519BEEA3600B1BBF2 /* TSContext.m in Sources */ = {isa = PBXBuildFile; fileRef = 5039E8D419BEEA3600B1BBF2 /* TSContext.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,10 @@
 		5039E8C119BE868500B1BBF2 /* TaskSequenceTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TaskSequenceTests-Info.plist"; sourceTree = "<group>"; };
 		5039E8C319BE868500B1BBF2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		5039E8C519BE868500B1BBF2 /* TaskSequenceTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaskSequenceTests.m; sourceTree = "<group>"; };
+		5039E8D019BEE88000B1BBF2 /* TSSequence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSSequence.h; sourceTree = "<group>"; };
+		5039E8D119BEE88000B1BBF2 /* TSSequence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSSequence.m; sourceTree = "<group>"; };
+		5039E8D319BEEA3600B1BBF2 /* TSContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TSContext.h; sourceTree = "<group>"; };
+		5039E8D419BEEA3600B1BBF2 /* TSContext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSContext.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,7 @@
 		5039E89419BE868500B1BBF2 = {
 			isa = PBXGroup;
 			children = (
+				5039E8CF19BEE75900B1BBF2 /* Classes */,
 				5039E8A619BE868500B1BBF2 /* TaskSequence */,
 				5039E8BF19BE868500B1BBF2 /* TaskSequenceTests */,
 				5039E89F19BE868500B1BBF2 /* Frameworks */,
@@ -142,6 +149,17 @@
 				5039E8C219BE868500B1BBF2 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		5039E8CF19BEE75900B1BBF2 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5039E8D319BEEA3600B1BBF2 /* TSContext.h */,
+				5039E8D419BEEA3600B1BBF2 /* TSContext.m */,
+				5039E8D019BEE88000B1BBF2 /* TSSequence.h */,
+				5039E8D119BEE88000B1BBF2 /* TSSequence.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -240,6 +258,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5039E8B119BE868500B1BBF2 /* AppDelegate.m in Sources */,
+				5039E8D219BEE88000B1BBF2 /* TSSequence.m in Sources */,
+				5039E8D519BEEA3600B1BBF2 /* TSContext.m in Sources */,
 				5039E8AD19BE868500B1BBF2 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -437,6 +457,7 @@
 				5039E8CB19BE868500B1BBF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5039E8CC19BE868500B1BBF2 /* Build configuration list for PBXNativeTarget "TaskSequenceTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +466,7 @@
 				5039E8CE19BE868500B1BBF2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
